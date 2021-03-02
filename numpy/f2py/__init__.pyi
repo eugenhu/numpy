@@ -4,4 +4,3 @@ __all__: List[str]
 
 run_main: Any
 compile: Any
-f2py_testing: Any

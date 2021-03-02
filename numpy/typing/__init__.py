@@ -347,7 +347,3 @@ if __doc__ is not None:
     __doc__ += _docstrings
     __doc__ += '\n.. autoclass:: numpy.typing.NBitBase\n'
     del _docstrings
-
-from numpy._pytesttester import PytestTester
-test = PytestTester(__name__)
-del PytestTester

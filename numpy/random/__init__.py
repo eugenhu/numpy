@@ -206,8 +206,3 @@ def __RandomState_ctor():
 
     """
     return RandomState(seed=0)
-
-
-from numpy._pytesttester import PytestTester
-test = PytestTester(__name__)
-del PytestTester

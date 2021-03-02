@@ -64,8 +64,6 @@ fft
     Core FFT routines
 polynomial
     Polynomial tools
-testing
-    NumPy testing tools
 f2py
     Fortran to Python Interface Generator.
 distutils
@@ -74,8 +72,6 @@ distutils
 
 Utilities
 ---------
-test
-    Run numpy unittests
 show_config
     Show numpy build configuration
 dual
@@ -292,41 +288,18 @@ else:
                 warnings.warn(msg, DeprecationWarning, stacklevel=2)
                 return val
 
-            # Importing Tester requires importing all of UnitTest which is not a
-            # cheap import Since it is mainly used in test suits, we lazy import it
-            # here to save on the order of 10 ms of import time for most users
-            #
-            # The previous way Tester was imported also had a side effect of adding
-            # the full `numpy.testing` namespace
-            if attr == 'testing':
-                import numpy.testing as testing
-                return testing
-            elif attr == 'Tester':
-                from .testing import Tester
-                return Tester
-
             raise AttributeError("module {!r} has no attribute "
                                  "{!r}".format(__name__, attr))
 
         def __dir__():
-            return list(globals().keys() | {'Tester', 'testing'})
+            return list(globals().keys())
 
     else:
-        # We don't actually use this ourselves anymore, but I'm not 100% sure that
-        # no-one else in the world is using it (though I hope not)
-        from .testing import Tester
-
         # We weren't able to emit a warning about these, so keep them around
         globals().update({
             k: v
             for k, (v, msg) in __deprecated_attrs__.items()
         })
-
-
-    # Pytest testing
-    from numpy._pytesttester import PytestTester
-    test = PytestTester(__name__)
-    del PytestTester
 
 
     def _sanity_check():

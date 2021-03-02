@@ -300,13 +300,7 @@ def parse_setuppy_commands():
     # the user explicitly adds a --force command-line argument.
     bad_commands = dict(
         test="""
-            `setup.py test` is not supported.  Use one of the following
-            instead:
-
-              - `python runtests.py`              (to build and test)
-              - `python runtests.py --no-build`   (to test installed numpy)
-              - `>>> numpy.test()`           (run tests for installed numpy
-                                              from within an interpreter)
+            tests are disabled.
             """,
         upload="""
             `setup.py upload` is not supported, because it's insecure.
@@ -401,7 +395,6 @@ def setup_package():
         license='BSD',
         classifiers=[_f for _f in CLASSIFIERS.split('\n') if _f],
         platforms=["Windows", "Linux", "Solaris", "Mac OS-X", "Unix"],
-        test_suite='pytest',
         version=versioneer.get_version(),
         cmdclass=cmdclass,
         python_requires='>=3.7',

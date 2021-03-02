@@ -202,7 +202,3 @@ For examples, see the various functions.
 
 from ._pocketfft import *
 from .helper import *
-
-from numpy._pytesttester import PytestTester
-test = PytestTester(__name__)
-del PytestTester

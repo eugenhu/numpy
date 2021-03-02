@@ -26,18 +26,6 @@ from . import unixccompiler
 
 from .npy_pkg_config import *
 
-# If numpy is installed, add distutils.test()
-try:
-    from . import __config__
-    # Normally numpy is installed if the above import works, but an interrupted
-    # in-place build could also have left a __config__.py.  In that case the
-    # next import may still fail, so keep it inside the try block.
-    from numpy._pytesttester import PytestTester
-    test = PytestTester(__name__)
-    del PytestTester
-except ImportError:
-    pass
-
 
 def customized_fcompiler(plat=None, compiler=None):
     from numpy.distutils.fcompiler import new_fcompiler

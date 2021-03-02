@@ -192,7 +192,6 @@ from numpy import (
     polynomial as polynomial,
     random as random,
     rec as rec,
-    testing as testing,
     version as version,
 )
 

@@ -160,7 +160,3 @@ copyreg.pickle(type(dtype), _DType_reduce, _DType_reconstruct)
 del copyreg
 del _ufunc_reduce
 del _DType_reduce
-
-from numpy._pytesttester import PytestTester
-test = PytestTester(__name__)
-del PytestTester
